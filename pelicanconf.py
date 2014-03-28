@@ -38,6 +38,7 @@ SOCIAL = (
     ('Facebook', 'https://www.facebook.com/hbwinther'),
     ('Linkedin', 'http://www.linkedin.com/in/hbwinther'),
 )
+EMAIL = 'user@example.com'
 
 STATIC_PATHS = ["images", ]
 
