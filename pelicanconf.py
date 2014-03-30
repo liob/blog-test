@@ -5,6 +5,7 @@ AUTHOR = u'Hinrich B. Winther'
 SITENAME = u'hblogs'
 SITEURL = ''
 THEME = 'theme/pelican-bootstrap3'
+CUSTOM_CSS = 'css/style.css'
 
 TIMEZONE = 'Europe/Berlin'
 
@@ -40,7 +41,7 @@ SOCIAL = (
 )
 EMAIL = 'user@example.com'
 
-STATIC_PATHS = ["images", ]
+STATIC_PATHS = ['images', 'css/style.css']
 
 # theme specific:
 DISPLAY_CATEGORIES_ON_MENU = False
@@ -48,3 +49,6 @@ DISPLAY_CATEGORIES_ON_MENU = False
 #AVATAR = 'images/hbwinther.jpg'
 HIDE_SITENAME = True
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
+
+PLUGIN_PATH = 'plugins'
+PLUGINS = ['pandoc_reader',]

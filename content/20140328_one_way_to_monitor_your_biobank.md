@@ -10,12 +10,12 @@ I just began my work at the University Medical Centre Mainz. One of the tasks of
 
 There are many things you have to tackle in order to setup a biobank. One of the more important ones is quality management. In order to produce reliable test results you need to know how in which conditions the specimen, resp. the vial, has been stored.
 
-![SmartFreezer 2.0](images/biobanking/smartfreezer_2.png)
+![SmartFreezer 2.0 as figure caption](images/biobanking/smartfreezer_2.png)
 
 Temperature Monitoring
 ----------------------
 
-The most important kriteria you should monitor is the temperature of your vials. For this 
+The most important kriteria you should monitor is the temperature of your vials. For this
 
 
 
