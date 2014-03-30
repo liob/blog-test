@@ -39,7 +39,6 @@ SOCIAL = (
     ('Facebook', 'https://www.facebook.com/hbwinther'),
     ('Linkedin', 'http://www.linkedin.com/in/hbwinther'),
 )
-EMAIL = 'user@example.com'
 
 STATIC_PATHS = ['images', 'css/style.css']
 
@@ -51,4 +50,5 @@ HIDE_SITENAME = True
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 
 PLUGIN_PATH = 'plugins'
-PLUGINS = ['pandoc_reader',]
+PLUGINS = ['pandoc_reader', 'better_figures_and_images']
+RESPONSIVE_IMAGES = True
