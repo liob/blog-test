@@ -19,15 +19,6 @@ img.align-right {
     box-shadow: 4px 4px 4px 0px rgba(128, 128, 128, 0.5);
 }
 
-.figure.align-right {
-    float: right;
-    margin: 0 0 1em 1em;
-}
-
-.figure.align-left {
-    float: left;
-}
-
 .figure img {
     border: none;
     border-radius: 0;
@@ -41,4 +32,8 @@ img.align-right {
     font-size: 80%;
     padding: 4px;
     text-align: left;
+}
+
+.fa-email-square:before {
+    content: "\f0e0";
 }

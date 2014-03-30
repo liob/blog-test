@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Hinrich B. Winther'
-SITENAME = u'hblogs'
+SITENAME = u'Blog'
 SITEURL = ''
 THEME = 'theme/pelican-bootstrap3'
 CUSTOM_CSS = 'css/style.css'
@@ -32,7 +32,7 @@ RELATIVE_URLS = True
 DISPLAY_PAGES_ON_MENU = True
 
 SOCIAL = (
-    ('Mail', 'mailto:hbwinther@metalabs.de'),
+    ('EMail', 'mailto:hbwinther@metalabs.de'),
     ('Twitter', 'http://twitter.com/hbwinther'),
     ('Github', 'http://github.com/liob/'),
     ('BitBucket', 'https://bitbucket.org/hbwinther'),
@@ -46,7 +46,7 @@ STATIC_PATHS = ['images', 'css/style.css']
 DISPLAY_CATEGORIES_ON_MENU = False
 #ABOUT_ME = 'Hi'
 #AVATAR = 'images/hbwinther.jpg'
-HIDE_SITENAME = True
+#HIDE_SITENAME = True
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 
 PLUGIN_PATH = 'plugins'
