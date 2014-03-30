@@ -37,3 +37,8 @@ img.align-right {
 .fa-email-square:before {
     content: "\f0e0";
 }
+
+.references {
+    font-size: 80%;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}

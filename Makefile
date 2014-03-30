@@ -8,7 +8,7 @@ OUTPUTDIR=$(BASEDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
 
-ZOTFILENAME = bibliography.bib
+ZOTFILENAME = content/bibliography.bib
 
 FTP_HOST=localhost
 FTP_USER=anonymous
@@ -110,6 +110,8 @@ ifeq ($(TRAVIS_PULL_REQUEST), false)
 endif
 
 bib:
-	curl --silent "https://api.zotero.org/groups/206974/collections/K4EFAX4U/items?format=bibtex&limit=100" > content/$(ZOTFILENAME)
+	curl --silent "https://api.zotero.org/groups/206974/collections/K4EFAX4U/items?format=bibtex&limit=100" > $(ZOTFILENAME)
+	cat $(ZOTFILENAME) | sed 's/_????,/,/g' > $(ZOTFILENAME)_temp
+	mv $(ZOTFILENAME)_temp $(ZOTFILENAME)
 
 .PHONY: html help clean regenerate serve devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github bib

@@ -6,6 +6,4 @@ Slug: about
 Author: Hinrich B. Winther
 Summary: 
 
-![Portrait Photo]({filename}/images/hbwinther.jpg)
-
-ToDo!
+![Hinrich B. Winther]({filename}/images/hbwinther.jpg)
