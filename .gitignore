@@ -1,4 +1,7 @@
+content/pages/publications.htm
+
 *.pyc
+*.md~
 .DS_Store
 /.idea
 /output

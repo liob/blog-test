@@ -54,7 +54,7 @@ help:
 	@echo 'Set the DEBUG variable to 1 to enable debugging, e.g. make DEBUG=1 html'
 	@echo '                                                                       '
 
-html: bib
+html:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 clean:
@@ -82,7 +82,7 @@ stopserver:
 	kill -9 `cat srv.pid`
 	@echo 'Stopped Pelican and SimpleHTTPServer processes running in background.'
 
-publish: bib
+publish: bib mypublications
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 
 ssh_upload: publish
@@ -109,9 +109,12 @@ ifeq ($(TRAVIS_PULL_REQUEST), false)
 	@git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git gh-pages > /dev/null
 endif
 
+mypublications:
+	./generate_my_publications.sh
+
 bib:
 	curl --silent "https://api.zotero.org/groups/206974/collections/K4EFAX4U/items?format=bibtex&limit=100" > $(ZOTFILENAME)
 	cat $(ZOTFILENAME) | sed 's/_????,/,/g' > $(ZOTFILENAME)_temp
 	mv $(ZOTFILENAME)_temp $(ZOTFILENAME)
 
-.PHONY: html help clean regenerate serve devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github bib
+.PHONY: html help clean regenerate serve devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github bib mypublications
