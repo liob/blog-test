@@ -33,7 +33,7 @@ How Can Pelican Be Improved to Support Citations
 
 As Martin Fenner stated in his call for scholarly markdown [@fenner_call_2012] most of these features are already supported by [Pandoc]. This covers an excelent implementation for citations, including support for the [Citation Style Language (CSL)][CSL] which is espacilly useful when writing papers or abstracts. The natural fit is to use Pandoc as backend for Pelican. This can be achieved by creating a Pelican reader plugin, which is [fairly straight forward][How to create a new reader]. An implementation of such a reader plugin can be done in well under 50 lines of code: [Pandoc_Reader].
 
-Yet, there is a lot of room for improvements. This includes fairly simple issues like cross referencing the references with the reference handles as well as more complex ones like [support for internal links for tables and figures][Pandoc issue 813].
+Yet, there is a lot of room for improvements. This includes fairly simple issues like cross referencing the references with html anchors as well as more complex ones like [support for internal links for tables and figures][Pandoc issue 813].
 
 
 
