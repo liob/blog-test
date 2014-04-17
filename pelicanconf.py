@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Hinrich B. Winther'
-SITENAME = u'hbwinther'
+SITENAME = u'Blog'
 SITEURL = 'http://hbwinther.metalabs.de'
 THEME = 'theme/pelican-bootstrap3'
 CUSTOM_CSS = 'css/style.css'
