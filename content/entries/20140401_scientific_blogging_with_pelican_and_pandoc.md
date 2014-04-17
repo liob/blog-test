@@ -39,7 +39,7 @@ As Martin Fenner stated in his call for scholarly markdown [@fenner_call_2012] m
 Lookout
 -------
 
-Although Pandoc has excellent support for structured text, figures, tables, equations and citations there is a lot of room for improvement. This includes fairly simple issues such as cross referencing support using html anchors as well as more complex ones such as [support for internal links for tables and figures][Pandoc issue 813].
+Although Pandoc has excellent support for structured text, figures, tables, equations and citations there is room for improvement. This includes fairly simple issues such as cross referencing support using html anchors as well as more complex ones such as [support for internal links for tables and figures][Pandoc issue 813].
 
 
 References
