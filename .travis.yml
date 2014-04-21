@@ -3,7 +3,7 @@ branches:
   only:
     - master
 install:
-  - pip install --allow-external PIL pelican ghp-import Markdown beautifulsoup4 pypandoc PIL
+  - pip install --allow-external PIL --allow-unverified PIL pelican ghp-import Markdown beautifulsoup4 pypandoc PIL
 script:
   - make publish github
 env:
