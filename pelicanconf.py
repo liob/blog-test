@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Hinrich B. Winther'
-SITENAME = u'Blog'
-SITEURL = 'http://hbwinther.metalabs.de'
+SITENAME = u'Proven Inconclusive'
+SITEURL = 'http://proven-inconclusive.com'
 THEME = 'theme/pelican-bootstrap3'
 CUSTOM_CSS = 'css/style.css'
 
@@ -39,7 +39,7 @@ SOCIAL = (
     ('BitBucket', 'https://bitbucket.org/hbwinther'),
     ('Facebook', 'https://www.facebook.com/hbwinther'),
     ('Linkedin', 'http://www.linkedin.com/in/hbwinther'),
-    ('RSS', 'http://hbwinther.metalabs.de/feeds/all.atom.xml'),
+    ('RSS', 'http://proven-inconclusive.com/feeds/all.atom.xml'),
 )
 
 STATIC_PATHS = ['images', 'css/style.css']
