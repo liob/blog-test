@@ -4,6 +4,8 @@ branches:
     - source
 install:
   - pip install --allow-external PIL --allow-unverified PIL pelican ghp-import Markdown beautifulsoup4 pypandoc PIL
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq pandoc
 script:
   - make publish github
 env:
