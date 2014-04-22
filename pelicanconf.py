@@ -52,7 +52,8 @@ DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 
 PLUGIN_PATH = 'plugins'
-PLUGINS = ['pandoc_reader', 'better_figures_and_images']
+PLUGINS = ['pandoc_reader',]
+#PLUGINS = ['pandoc_reader', 'better_figures_and_images']
 RESPONSIVE_IMAGES = True
 PANDOC_ARGS = [ 
     '--bibliography=bibliography.bib',
