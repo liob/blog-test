@@ -73,7 +73,7 @@ def _process_file(source, to, format, extra_args):
     
     print source.encode('utf-8')
 
-    result = p.communicate(source.encode('utf-8'), timeout=30)[0].decode('utf-8')
+    result = p.communicate(source.encode('utf-8'))[0].decode('utf-8')
     
     print "pypantest 6"
     

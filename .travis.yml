@@ -11,6 +11,8 @@ install:
 script:
   - which pandoc
   - pandoc -h
+  - pandoc -v
+  - python -V
   - make publish github
 env:
   global:
