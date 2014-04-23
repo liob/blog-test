@@ -64,10 +64,13 @@ def _process_file(source, to, format, extra_args):
     
     print "pypantest 4"
     
+    env = { 'PYTHONIOENCODING': 'utf-8' }
+    
     p = subprocess.Popen(
             args,
             stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE)
+            stdout=subprocess.PIPE,
+            env=env)
     
     print "pypantest 5"
     
