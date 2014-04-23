@@ -64,8 +64,8 @@ def _process_file(source, to, format, extra_args):
     
     print "pypantest 4"
     
-    env = { 'PYTHONIOENCODING': 'utf-8' }
-    
+    env = os.environ
+    env['PYTHONIOENCODING'] = 'utf-8'
     p = subprocess.Popen(
             args,
             stdin=subprocess.PIPE,
@@ -73,8 +73,6 @@ def _process_file(source, to, format, extra_args):
             env=env)
     
     print "pypantest 5"
-    
-    print source.encode('utf-8')
 
     result = p.communicate(source.encode('utf-8'))[0].decode('utf-8')
     
