@@ -10,10 +10,10 @@ class NewReader(BaseReader):
 
 
     def read(self, filename):
-        print "-------------------"
-        print "     mdtest"
-        print "-------------------"
         with pelican_open(filename) as text:
+            print "-------------------"
+            print "     mdtest"
+            print "-------------------"
             metadata_items = []
             in_content = False
             MD = ''
