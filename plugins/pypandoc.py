@@ -65,12 +65,12 @@ def _process_file(source, to, format, extra_args):
     print "pypantest 4"
     
     env = os.environ
-    print env
     env['PYTHONIOENCODING'] = 'utf-8'
     p = subprocess.Popen(
             args,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
+            shell=True,
             env=env)
     
     print "pypantest 5"
