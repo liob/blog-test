@@ -10,7 +10,7 @@ install:
 #  - pip install pelican==3.3 ghp-import Markdown beautifulsoup4 pypandoc==0.8.1 Pillow
   - pip install pelican==3.3 ghp-import Markdown beautifulsoup4
 script:
-  - bash -c "make publish github"
+  - bash -c "env -i PATH=/usr/bin HOME=`pwd` make html"
 env:
   global:
     secure: SQhpImRQiS2bYQw+ZhwI18PWMP4d6ssvII8xoP+XMN6M2OrBtEwFc4QDyw714tjDzdjur4iDWa9LQmz/Yh+43Jj5SN6FwDhTlUMbaTV/HUAWru2tY6o2mZ0jkGewhOgyvJoX/EKJ4J2HrVtTxdJpcXb7mjjnhlV7u4yh+PlK5ss=
