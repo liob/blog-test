@@ -8,6 +8,8 @@ before_install:
 install:
   - pip install pelican==3.3 ghp-import Markdown beautifulsoup4 pypandoc==0.8.1 Pillow
 script:
+  - which pandoc
+  - pandoc -h
   - make publish github
 env:
   global:
