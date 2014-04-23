@@ -56,8 +56,8 @@ PLUGINS = ['mdtest',]
 #PLUGINS = ['pandoc_reader', 'better_figures_and_images']
 RESPONSIVE_IMAGES = True
 PANDOC_ARGS = [ 
-    '--bibliography=bibliography.bib',
-    '--csl=jmir.csl',
+    '--bibliography=./bibliography.bib',
+    '--csl=./jmir.csl',
     '--mathml' ]
 
 ARTICLE_URL = 'blog/{date:%Y}/{date:%b}/{date:%d}/{slug}.html'
