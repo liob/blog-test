@@ -5,10 +5,7 @@ branches:
 install:
   - pip install pelican==3.3 ghp-import Markdown beautifulsoup4 pypandoc==0.8.1 Pillow
   - sudo apt-get update -qq
-  - sudo apt-get install -qq cabal-install
-  - cabal update
-  - cabal install pandoc
-  - PATH="$HOME/.cabal/bin:$PATH"
+  - sudo apt-get install -qq pandoc
 script:
   - make publish github
 env:
