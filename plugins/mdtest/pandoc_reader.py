@@ -36,11 +36,11 @@ class NewReader(BaseReader):
         print "     mdtest 3"
         os.chdir(self.settings['PATH']) # change the cwd to the content dir
         if 'PANDOC_ARGS' in self.settings:
-			print "     mdtest 4"
+            print "     mdtest 4"
             output = pypandoc.convert(MD, 'html5', format='md', extra_args=self.settings['PANDOC_ARGS'])
             print "     mdtest 5"
         else:
-			print "     mdtest 6"
+            print "     mdtest 6"
             output = pypandoc.convert(MD, 'html5', format='md')
             print "     mdtest 7"
         
