@@ -12,8 +12,7 @@ class NewReader(BaseReader):
     def read(self, filename):
         with pelican_open(filename) as text:
             print "-------------------"
-            print "     mdtest"
-            print "-------------------"
+            print "     mdtest 1"
             metadata_items = []
             in_content = False
             MD = ''
@@ -24,7 +23,8 @@ class NewReader(BaseReader):
                 else:
                     in_content = True
                     MD += line + '\n'
-
+            
+            print "     mdtest 2"
             metadata = {}
             for item in metadata_items:
                 name, value = item
@@ -32,13 +32,19 @@ class NewReader(BaseReader):
                 value = value.strip()
                 meta = self.process_metadata(name, value)
                 metadata[name] = meta
-
+        
+        print "     mdtest 3"
         os.chdir(self.settings['PATH']) # change the cwd to the content dir
         if 'PANDOC_ARGS' in self.settings:
+			print "     mdtest 4"
             output = pypandoc.convert(MD, 'html5', format='md', extra_args=self.settings['PANDOC_ARGS'])
+            print "     mdtest 5"
         else:
+			print "     mdtest 6"
             output = pypandoc.convert(MD, 'html5', format='md')
-
+            print "     mdtest 7"
+        
+        print "     mdtest 8"
         return output, metadata
 
 def add_reader(readers):
