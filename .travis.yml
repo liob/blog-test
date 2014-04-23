@@ -4,11 +4,10 @@ python:
 branches:
   only:
     - source
-before_install:
-  - sudo apt-get update
-  - sudo apt-get install pandoc
 install:
 #  - pip install pelican==3.3 ghp-import Markdown beautifulsoup4 pypandoc==0.8.1 Pillow
+  - sudo apt-get update
+  - sudo apt-get install pandoc python-imaging
   - pip install pelican==3.3 ghp-import Markdown beautifulsoup4 Pillow
 script:
   - which pandoc
