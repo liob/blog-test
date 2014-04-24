@@ -5,7 +5,7 @@ branches:
   only:
     - source
 before_install:
-  - curl https://s3.amazonaws.com/rstudio-buildtools/pandoc-1.12.3.zip > pandoc.zip
+  - curl --silent https://s3.amazonaws.com/rstudio-buildtools/pandoc-1.12.3.zip > pandoc.zip
   - unzip -j pandoc.zip pandoc-1.12.3/linux/debian/x86_64/pandoc pandoc-1.12.3/linux/debian/x86_64/pandoc-citeproc
   - mkdir -p $HOME/bin
   - mv pandoc pandoc-citeproc $HOME/bin
@@ -13,11 +13,9 @@ before_install:
 install:
   - sudo apt-get -q update
   - sudo apt-get -q install python-imaging
-#  - pip install pelican==3.3 ghp-import Markdown beautifulsoup4 pypandoc==0.8.1 Pillow
-  - pip install pelican==3.3 ghp-import Markdown beautifulsoup4
+  - pip install pelican==3.3 ghp-import Markdown beautifulsoup4 pypandoc==0.8.1
 script:
   - make github
 env:
   global:
     secure: SQhpImRQiS2bYQw+ZhwI18PWMP4d6ssvII8xoP+XMN6M2OrBtEwFc4QDyw714tjDzdjur4iDWa9LQmz/Yh+43Jj5SN6FwDhTlUMbaTV/HUAWru2tY6o2mZ0jkGewhOgyvJoX/EKJ4J2HrVtTxdJpcXb7mjjnhlV7u4yh+PlK5ss=
-
