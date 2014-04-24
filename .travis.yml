@@ -4,9 +4,13 @@ python:
 branches:
   only:
     - source
+before_install:
+  - curl https://s3.amazonaws.com/rstudio-buildtools/pandoc-1.12.3.zip > pandoc.zip
+  - unzip -j pandoc.zip pandoc-1.12.3/linux/debian/x86_64/pandoc
+  - mv pandoc /usr/bin
 install:
-  - sudo apt-get update
-  - sudo apt-get install pandoc python-imaging
+  - sudo apt-get -q update
+  - sudo apt-get -q install python-imaging
 #  - pip install pelican==3.3 ghp-import Markdown beautifulsoup4 pypandoc==0.8.1 Pillow
   - pip install pelican==3.3 ghp-import Markdown beautifulsoup4
 script:
