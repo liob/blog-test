@@ -68,7 +68,7 @@ def _process_file(source, to, format, extra_args):
             args,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
-            env=os.environ.copy())
+            shell=False)
     
     print "pypantest 5"
 
