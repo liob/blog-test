@@ -65,3 +65,6 @@ ARTICLE_SAVE_AS = ARTICLE_URL
 #PAGE_SAVE_AS = '{slug}.html'
 TAG_URL = 'tags/{slug}.html'
 TAG_SAVE_AS = 'tags/{slug}.html'
+
+PIWIK_URL = 'http://tools.metalabs.de/piwik/piwik.php'
+PIWIK_SITE_ID = '3'
