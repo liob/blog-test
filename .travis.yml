@@ -11,9 +11,7 @@ before_install:
   - mv pandoc pandoc-citeproc $HOME/bin
   - PATH=$HOME/bin:$PATH
 install:
-  - sudo apt-get -q update
-  - sudo apt-get -q install python-pillow
-  - pip install pelican==3.3 ghp-import Markdown beautifulsoup4 pypandoc==0.8.1
+  - pip install pelican==3.3 ghp-import Markdown beautifulsoup4 pypandoc==0.8.1 Pillow
 script:
   - make github
 env:
