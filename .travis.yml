@@ -7,7 +7,9 @@ branches:
 before_install:
   - curl https://s3.amazonaws.com/rstudio-buildtools/pandoc-1.12.3.zip > pandoc.zip
   - unzip -j pandoc.zip pandoc-1.12.3/linux/debian/x86_64/pandoc
-  - mv pandoc /usr/bin
+  - mkdir -p $HOME/bin
+  - mv pandoc $HOME/bin
+  - PATH=$HOME/bin:$PATH
 install:
   - sudo apt-get -q update
   - sudo apt-get -q install python-imaging
