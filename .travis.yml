@@ -6,9 +6,9 @@ branches:
     - source
 before_install:
   - curl https://s3.amazonaws.com/rstudio-buildtools/pandoc-1.12.3.zip > pandoc.zip
-  - unzip -j pandoc.zip pandoc-1.12.3/linux/debian/x86_64/pandoc
+  - unzip -j pandoc.zip pandoc-1.12.3/linux/debian/x86_64/pandoc pandoc-1.12.3/linux/debian/x86_64/pandoc-citeproc
   - mkdir -p $HOME/bin
-  - mv pandoc $HOME/bin
+  - mv pandoc pandoc-citeproc $HOME/bin
   - PATH=$HOME/bin:$PATH
 install:
   - sudo apt-get -q update
