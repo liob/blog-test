@@ -23,6 +23,10 @@ CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 #          ('Python.org', 'http://python.org/'),
 #          ('Jinja2', 'http://jinja.pocoo.org/'),
 #          ('You can modify those links in your config file', '#'),)
+LINKS =  (
+    ('Christian Hundt', 'http://abstractnonsense.de'),
+)
+
 
 #MENUITEMS = (('Projects', '/pages/about.html'),)
 
@@ -65,6 +69,3 @@ ARTICLE_SAVE_AS = ARTICLE_URL
 #PAGE_SAVE_AS = '{slug}.html'
 TAG_URL = 'tags/{slug}.html'
 TAG_SAVE_AS = 'tags/{slug}.html'
-
-PIWIK_URL = 'tools.metalabs.de/piwik'
-PIWIK_SITE_ID = '3'
