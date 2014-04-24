@@ -12,7 +12,7 @@ before_install:
   - PATH=$HOME/bin:$PATH
 install:
   - sudo apt-get -q update
-  - sudo apt-get -q install python-imaging
+  - sudo apt-get -q install python-pillow
   - pip install pelican==3.3 ghp-import Markdown beautifulsoup4 pypandoc==0.8.1
 script:
   - make github
