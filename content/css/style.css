@@ -50,6 +50,8 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    opacity:0.95;
+    filter:alpha(opacity=95); /* For IE8 and earlier */
 }
 
 #content,article {
