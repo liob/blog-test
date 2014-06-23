@@ -25,6 +25,7 @@ CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 #          ('You can modify those links in your config file', '#'),)
 LINKS =  (
     ('Christian Hundt', 'http://abstractnonsense.de'),
+    ('Randy Olson', 'http://www.randalolson.com/blog/'),
 )
 
 
@@ -50,7 +51,7 @@ STATIC_PATHS = ['images', 'css/style.css']
 
 # theme specific:
 DISPLAY_CATEGORIES_ON_MENU = False
-#ABOUT_ME = 'Hi'
+#ABOUT_ME = 'Simplicity is the ultimate sophistication'
 #AVATAR = 'images/hbwinther.jpg'
 #HIDE_SITENAME = True
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
@@ -69,3 +70,6 @@ ARTICLE_SAVE_AS = ARTICLE_URL
 #PAGE_SAVE_AS = '{slug}.html'
 TAG_URL = 'tags/{slug}.html'
 TAG_SAVE_AS = 'tags/{slug}.html'
+
+TWITTER_USERNAME = 'hbwinther'
+TWITTER_WIDGET_ID = 481049923681406977
