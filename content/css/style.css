@@ -43,3 +43,19 @@ img.align-right {
     /* font-size: 80%; */
     font-family: Verdana, Arial, Helvetica, sans-serif;
 }
+
+body {
+    background: url(http://www.debianart.org/cchost/people/si0ux/si0ux_-_Air_SVG_Cover.svg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    opacity:0.95;
+    filter:alpha(opacity=95); /* For IE8 and earlier */
+}
+
+#content,article {
+    background-color: white;
+    border-radius: 3px;
+    padding: 9px;
+}
