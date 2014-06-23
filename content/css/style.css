@@ -45,11 +45,13 @@ img.align-right {
 }
 
 body {
+/*
     background: url(http://www.debianart.org/cchost/people/si0ux/si0ux_-_Air_SVG_Cover.svg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+*/
     opacity:0.95;
     filter:alpha(opacity=95); /* For IE8 and earlier */
 }
