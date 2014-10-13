@@ -22,7 +22,7 @@ In a recent paper [@citation] we included data from a survey we conducted. Durin
   4. A correlation is a dimensionless quantity. When can it be regarded as a strong or weak correlation?
 
 
-### Choosing a Correlation Algorythm
+### Choosing a Correlation Algorithm
 
 As most papers in my field use either Pearson's r or Spearman's rho I began my research there. As it turns out, there are two types of algorithms: parametric and non-parametric. Parametric algorithms depend on some assumptions about the data set. In case of Pearson's r you need to know about the distribution, scaling and dependency of the variables of the data set.
 
