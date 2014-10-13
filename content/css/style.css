@@ -8,7 +8,7 @@ img.align-right {
     margin: 1em 0 1em 1em;
 }
 
-figure {
+figure, table {
     display: table;
     max-width: 100%;
 	border: 1px solid #bbb;
@@ -30,7 +30,6 @@ figure img {
 }
 
 figcaption {
-    font-size: 80%;
     padding: 4px;
     text-align: center;
 }
@@ -62,6 +61,71 @@ body {
     border-radius: 3px;
     padding: 9px;
 }
+
+
+/* ---- Tables ---- */
+    
+table {
+    max-width: 100%;
+}
+    
+thead /* Entire table header */
+    {
+    border-bottom: 1pt solid #000;
+    background-color: #eee; /* Does this BG print well? */
+    }
+ 
+tr.header /* Each header row */
+    {
+    } 
+ 
+tbody /* Entire table  body */
+    {
+    }
+ 
+/* Table body rows */
+ 
+tr  {
+    }
+tr.odd:hover, tr.even:hover /* Use .odd and .even classes to avoid styling rows in other tables */
+    {
+    background-color: #eee;
+    }
+    
+/* Odd and even rows */
+tr.odd {}
+tr.even {}
+ 
+td, th /* Table cells and table header cells */
+    { 
+    vertical-align: top; /* Word */
+    vertical-align: baseline; /* Others */
+    padding-left:   0.5em;
+    padding-right:  0.5em;
+    padding-top:    0.2em;
+    padding-bottom: 0.2em;
+    }
+
+th /* Table header cells */
+    {
+    font-weight: bold; 
+    }
+ 
+tfoot /* Table footer (what appears here if caption is on top?) */
+    {
+    }
+ 
+caption /* This is for a table caption tag, not the p.caption Pandoc uses in a div.figure */
+    {
+    caption-side: bottom;
+    padding: 4px;
+    border: 1px solid #bbb;
+    border-top: none;
+    box-shadow: 4px 4px 4px 0px rgba(128, 128, 128, 0.5);
+    z-index: -1;
+    background: white;
+    }
+ 
 
 
 /* ---- Pandoc Code Syntax Highlighting ---- */

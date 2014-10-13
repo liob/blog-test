@@ -9,8 +9,7 @@ Modified:
 Status: draft
 
 
-
-![Figure 1: ](/images/R/spearman_correlation_heatmap_mtcars.svg)
+![Figure 1: Spearman correlation heatmap with correlation coefficient and significance based on the mtcars data set.]({filename}/images/R/spearman_correlation_heatmap_mtcars.svg)
 
 In a recent paper [@citation] we included data from a survey we conducted. During the publication process, one of the reviewers asked for a more in depth statistical analysis of the data set. He explicitly expressed an interest in correlating the variables in order to spot any interesting correlations. This posed a number of problems:
 
@@ -42,7 +41,7 @@ For the sake of demonstration we will use the [mtcars][mtcars] data set, provide
 |Hornet 4 Drive      | 21.4|   6| 258.0| 110| 3.08| 3.215| 19.44|  1|  0|    3|    1|
 |Hornet Sportabout   | 18.7|   8| 360.0| 175| 3.15| 3.440| 17.02|  0|  0|    3|    2|
 
-Table 1: The first five (of 32) observations of the mtcars data set.
+: Table 1: The first five (of 32) observations of the mtcars data set.
 
 
 | axis  | description                              |
@@ -59,7 +58,7 @@ Table 1: The first five (of 32) observations of the mtcars data set.
 |gear   | Number of forward gears                  |
 |carb   | Number of carburetors                    |
 
-Table 2: Description of the variable labels of the mtcars data set.
+: Table 2: Description of the variable labels of the mtcars data set.
 
 
 ### Let's get it on!
