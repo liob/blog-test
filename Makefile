@@ -25,12 +25,13 @@ CLOUDFILES_USERNAME=my_rackspace_username
 CLOUDFILES_API_KEY=my_rackspace_api_key
 CLOUDFILES_CONTAINER=my_cloudfiles_container
 
-DROPBOX_DIR=~/Dropbox/Public/
-
 DEBUG ?= 1
 ifeq ($(DEBUG), 1)
 	PELICANOPTS += -D
 endif
+
+IMG_FILES = $(shell find content/images/ -type f -iname '*.svg')
+convert_img_files = $(patsubst content/images/%.svg, content/images/%.png, $(IMG_FILES))
 
 help:
 	@echo 'Makefile for a pelican Web site                                        '
@@ -45,7 +46,6 @@ help:
 	@echo '   make stopserver                  stop local server                  '
 	@echo '   make ssh_upload                  upload the web site via SSH        '
 	@echo '   make rsync_upload                upload the web site via rsync+ssh  '
-	@echo '   make dropbox_upload              upload the web site via Dropbox    '
 	@echo '   make ftp_upload                  upload the web site via FTP        '
 	@echo '   make s3_upload                   upload the web site via S3         '
 	@echo '   make cf_upload                   upload the web site via Cloud Files'
@@ -54,7 +54,7 @@ help:
 	@echo 'Set the DEBUG variable to 1 to enable debugging, e.g. make DEBUG=1 html'
 	@echo '                                                                       '
 
-html:
+html: $(convert_img_files)
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 clean:
@@ -82,7 +82,7 @@ stopserver:
 	kill -9 `cat srv.pid`
 	@echo 'Stopped Pelican and SimpleHTTPServer processes running in background.'
 
-publish: bib mypublications
+publish: bib mypublications $(convert_img_files)
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 
 ssh_upload: publish
@@ -90,9 +90,6 @@ ssh_upload: publish
 
 rsync_upload: publish
 	rsync -e "ssh -p $(SSH_PORT)" -P -rvz --delete $(OUTPUTDIR)/ $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR) --cvs-exclude
-
-dropbox_upload: publish
-	cp -r $(OUTPUTDIR)/* $(DROPBOX_DIR)
 
 ftp_upload: publish
 	lftp ftp://$(FTP_USER)@$(FTP_HOST) -e "mirror -R $(OUTPUTDIR) $(FTP_TARGET_DIR) ; quit"
@@ -118,4 +115,9 @@ bib:
 	cat $(ZOTFILENAME) | sed 's/_????,/,/g' > $(ZOTFILENAME)_temp
 	mv $(ZOTFILENAME)_temp $(ZOTFILENAME)
 
-.PHONY: html help clean regenerate serve devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github bib mypublications
+%.png: %.svg
+	convert "$<" "$@"
+	pngnq -f -s1 -e ".png" "$@"
+	advpng -z -4 -q "$@"
+
+.PHONY: html help clean regenerate serve devserver publish ssh_upload rsync_upload ftp_upload s3_upload cf_upload github bib mypublications convert_img_files
