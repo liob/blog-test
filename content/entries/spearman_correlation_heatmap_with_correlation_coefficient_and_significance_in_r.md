@@ -10,7 +10,7 @@ Status: draft
 
 
 
-![Figure 1: Lorem ipsum asdasd](/images/R/spearman_correlation_heatmap_mtcars.svgz)
+![Figure 1: Lorem ipsum asdasd](/images/R/spearman_correlation_heatmap_mtcars.svg)
 
 In a recent paper [@citation] we included data from a survey we conducted. During the publication process, one of the reviewers asked for a more in depth statistical analysis of the data set. He explicitly expressed an interest in correlating the variables in order to spot any interesting correlations. This posed a number of problems:
 
