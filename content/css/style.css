@@ -1,9 +1,6 @@
 img {
-    border: 1px solid #bbb;
-    border-radius: 3px;
     padding: 4px;
     margin: 1em 1em 1em 0;
-    box-shadow: 4px 4px 4px 0px rgba(128, 128, 128, 0.5);
 }
 
 img.align-right {
@@ -11,12 +8,14 @@ img.align-right {
     margin: 1em 0 1em 1em;
 }
 
-.figure {
-    border: 1px solid #bbb;
+figure {
+    display:table;
+	border: 1px solid #bbb;
     border-radius: 3px;
+    box-shadow: 4px 4px 4px 0px rgba(128, 128, 128, 0.5);
     padding: 4px;
     margin: 0 auto;
-    box-shadow: 4px 4px 4px 0px rgba(128, 128, 128, 0.5);
+    margin-bottom: 1.5em;
 }
 
 .figure img {
@@ -27,11 +26,10 @@ img.align-right {
     box-shadow: none;
 }
 
-.figure p.caption {
-    margin: 0;
+figcaption {
     font-size: 80%;
     padding: 4px;
-    text-align: left;
+    text-align: center;
 }
 
 .fa-email-square:before {
