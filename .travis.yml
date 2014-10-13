@@ -10,6 +10,7 @@ before_install:
   - mkdir -p $HOME/bin
   - mv pandoc pandoc-citeproc $HOME/bin
   - PATH=$HOME/bin:$PATH
+  - git submodule update --init --recursive
 install:
   - pip install pelican==3.3 ghp-import Markdown beautifulsoup4 pypandoc==0.8.1 Pillow
 script:
