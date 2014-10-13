@@ -1,7 +1,6 @@
 Title: Spearman Correlation Heatmap with Correlation Coefficient and Significance in R
 Date: 2014-06-23
-Tags: "scientific writing"
-Category: "scientific writing"
+Tags: "scientific writing", "R"
 Slug: spearman_correlation_heatmap_with_correlation_coefficient_and_significance_in_r
 Author: Hinrich B. Winther
 Summary: This is a template for future articles.
@@ -9,6 +8,9 @@ Modified:
 Modified: 
 Status: draft
 
+
+
+![Figure 1: Lorem ipsum asdasd](/images/R/spearman_correlation_heatmap_mtcars.svgz)
 
 In a recent paper [@citation] we included data from a survey we conducted. During the publication process, one of the reviewers asked for a more in depth statistical analysis of the data set. He explicitly expressed an interest in correlating the variables in order to spot any interesting correlations. This posed a number of problems:
 
@@ -29,6 +31,18 @@ Spearman's rho, on the other hand, is a non-parametric algorythm. It compares tw
 
 
 ### Let's get it on!
+
+ggplot2 is being used for plotting, Hmisc to create a correlation matrix, reshape2 to meld the dataframe as well as stats to provide the mtcars data set:
+
+```R
+library(ggplot2)
+library(reshape2)
+library(Hmisc)
+library(stats)
+```
+
+
+
 
   > rcorr Computes a matrix of Pearson's r or Spearman's rho rank correlation coefficients for all possible pairs of columns of a matrix. Missing values are deleted in pairs rather than deleting all rows of x having any missing variables. Ranks are computed using efficient algorithms, using midranks for ties.  
   -- R Documentation / rcorr {Hmisc}
