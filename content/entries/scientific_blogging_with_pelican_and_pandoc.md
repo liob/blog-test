@@ -1,7 +1,6 @@
 Title: Scientific Blogging with Pelican and Pandoc
 Date: 2014-04-24
 Tags: "scientific writing"
-Category: "scientific writing"
 Slug: scientific_blogging_with_pelican_and_pandoc
 Author: Hinrich B. Winther
 Summary: The format of scientific texts is highly dependant of the respective field as well as the publishing media. However, there are some universal standards such as the IMRAD (Introduction, Methods, Results and Discussion) format for reports of original data. Prerequisite for scientific texts can be gathered by taking a look at traditional papers and abstracts
