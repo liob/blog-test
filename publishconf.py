@@ -24,3 +24,5 @@ DELETE_OUTPUT_DIRECTORY = True
 
 PIWIK_URL = 'tools.metalabs.de/piwik'
 PIWIK_SITE_ID = '3'
+
+DISQUS_SITENAME = 'proven-inconclusive'
