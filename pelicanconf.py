@@ -54,6 +54,7 @@ DISPLAY_CATEGORIES_ON_MENU = False
 #AVATAR = 'images/hbwinther.jpg'
 #HIDE_SITENAME = True
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
+SHOW_ARTICLE_AUTHOR = True
 
 PLUGIN_PATH = 'plugins'
 PLUGINS = ['pandoc_reader']
