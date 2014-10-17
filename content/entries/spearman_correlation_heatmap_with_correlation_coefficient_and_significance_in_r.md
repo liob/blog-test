@@ -10,20 +10,18 @@ Status: draft
 
 ![Figure 1: Spearman correlation heatmap with correlation coefficient and significance levels based on the mtcars data set.]({filename}/images/R/spearman_correlation_heatmap_mtcars.svg)
 
-In a recent paper we included data from a survey we conducted. During the publication process, one of the reviewers asked for a more in depth statistical analysis of the data set. He (she?) explicitly expressed a special interest in correlating the variables in order to spot any interesting correlations. This posed a number of problems:
+In a recent paper we included data from a survey we conducted. During the publication process, one of the reviewers asked for a more in depth statistical analysis of the data set. He (she?) explicitly expressed a special interest in correlating the variables of the survey in order to spot any interesting correlations. This posed a number of problems:
 
   1. The data set has 35 variables. This translates into a huge correlation matrix.
   
   2. There are many ways to correlate variables. In my field the [Pearson product-moment correlation coefficient (Pearson's r)][Pearson] and the [Spearman's rank correlation coefficient (Spearman's rho)][Spearman] are the most common ones. Which one should I choose and why?
   
   3. Correlations by themselves are not very useful. You, most likely, want to have at least some information about the statistical significance of the correlation.
-  
-  4. A correlation is a dimensionless quantity. When can it be regarded as a strong or weak correlation?
 
 
 ### The Data Set
 
-For the sake of demonstration we will use the [mtcars] data set, provided by the stats package. The data set includes 11 variables with 32 observations, hence rendering the task a bit more manageable:
+For the sake of demonstration we will use the [mtcars] data set, provided by the [stats] package. The data set includes 11 variables with 32 observations, hence rendering the task a bit more manageable.
 
 |                    |  mpg| cyl|  disp|  hp| drat|    wt|  qsec| vs| am| gear| carb|
 |:-------------------|----:|---:|-----:|---:|----:|-----:|-----:|--:|--:|----:|----:|
@@ -62,7 +60,7 @@ Spearman's rho, on the other hand, is a non-parametric algorithm. It compares tw
 
 ### Let's get it on!
 
-For this statistical analysis I use the [R] statistical computing programming language with some extensions: [ggplot2] is being used for plotting, [Hmisc] to create a correlation matrix, [reshape2] to meld the dataframe as well as [stats] to provide the [mtcars] data set.
+[R], a statistical computing programming language, is being used for the statistical analysis with some additional libraries: [ggplot2] for plotting, [Hmisc] to create a correlation matrix, [reshape2] to meld the dataframe as well as [stats] to provide the [mtcars] data set.
 
 ```R
 library(ggplot2)
@@ -71,7 +69,7 @@ library(Hmisc)
 library(stats)
 ```
 
-At first a correlation matrix needs to be created. This can be done with the rcorr function of the Hmisc library.
+The first thing is to calculate the correlation of the individual variables to another. As we have our data already in a dataframe, merely a call of the rcorr function of the Hmisc library is necessary. This creates a new list with two entries: ”r” the correlation coefficients and ”P” the significance levels.
 
   > rcorr Computes a matrix of Pearson's r or Spearman's rho rank correlation coefficients for all possible pairs of columns of a matrix. Missing values are deleted in pairs rather than deleting all rows of x having any missing variables. Ranks are computed using efficient algorithms, using midranks for ties.  
   -- R Documentation / rcorr {Hmisc}
@@ -95,7 +93,7 @@ cormatrix = rcorr(as.matrix(d), type='spearman')
 |gear |  0.54| -0.56| -0.59| -0.33|  0.74| -0.68| -0.15|  0.28|  0.81|  1.00|  0.11|
 |carb | -0.66|  0.58|  0.54|  0.73| -0.13|  0.50| -0.66| -0.63| -0.06|  0.11|  1.00|
 
-: Table 3: Resulting correlation matrix - r values (cormatrix$r)
+: Table 3: Resulting correlation matrix - correlation coefficients (cormatrix$r)
 
 
 |     |  mpg|  cyl| disp|   hp| drat|   wt| qsec|   vs|   am| gear| carb|
@@ -112,9 +110,9 @@ cormatrix = rcorr(as.matrix(d), type='spearman')
 |gear | 0.00| 0.00| 0.00| 0.06| 0.00| 0.00| 0.42| 0.12| 0.00|   NA| 0.53|
 |carb | 0.00| 0.00| 0.00| 0.00| 0.49| 0.00| 0.00| 0.00| 0.73| 0.53|   NA|
 
-: Table 4: Resulting correlation matrix - P values (cormatrix$P)
+: Table 4: Resulting correlation matrix - significance levels (cormatrix$P)
 
-Now the heatmap can be plotted. [ggplot2] provides the [geom_tile] geometric object for this purpose. In order to plot the correlation matrix we need to meld the data set first.
+The correlation coefficients can be plotted using a heatmap representation. [ggplot2] provides the [geom_tile] geometric object for this purpose. In order to plot the correlation matrix we need to [meld][Melt] the dataframe first.
 
 ```R
 cordata = melt(cormatrix$r)
@@ -122,14 +120,16 @@ ggplot(cordata, aes(x=Var1, y=Var2, fill=value)) +
   geom_tile() + xlab("") + ylab("")
 ```
 
-![Figure 2: Spearman correlation heatmap based on the mtcars data set. No information about P values is included]({filename}/images/R/spearman_correlation_heatmap_mtcars_bare.svg)
+![Figure 2: Spearman correlation heatmap based on the mtcars data set. No information about significance levels is included]({filename}/images/R/spearman_correlation_heatmap_mtcars_bare.svg)
 
-Figure 2 shows the resulting Heatmap, plotted by ggplot2. However, some key data is missing. There is no information about the significance levels nor does the plot include the numeric values of Spearman's rho. In order to efficiently use the little space per tile, I wrote a short function ("abbreviateSTR") which abbreviates the values. The resulting strings are stored in a label column. This column can then be plotted onto the corrosponding tile. To further enhance the distinction between significant (P > 0.05) and insignificant values, a red "X" is being overlayed onto insignificant tiles. The resulting plot is shown in figure 1.
+Figure 2 shows the resulting Heatmap, plotted by ggplot2. However, some key data is missing. There is no information about the significance levels nor does the plot include the numeric values of Spearman's rho. In order to efficiently use the little space per tile, I wrote a little function ("abbreviateSTR") which abbreviates the values. The resulting strings are stored in a label column. This column can then be plotted onto the corrosponding tile. To further enhance the distinction between significant (P > 0.05) and insignificant correlations, a red, semi transparent, ”X” is being overlaid onto insignificant tiles. The resulting plot is shown in figure 1.
 
 
 ### Conclusion
 
-By using the non-parametric Spearman algorithm it is possible to create a preliminary overview of the correlations within a data set. This information can be plotted in a heatmap in conjunction with significance levels as well as numeric values of Spearman's rho. The resulting plot is a comprehensible representation of the data set, which allows quick identification of significant correlations.
+By using the non-parametric Spearman algorithm it is possible to create a preliminary overview of the correlations within a data set. This information can be plotted utilizing a heatmap representation in conjunction with significance levels as well as numeric values of Spearman's rho. The resulting plot is a comprehensible representation of the data set, which allows quick identification of significant correlations.
+
+Looking at the heatmap, one could get the impression that the gross horsepower has a strong negative correlation (r ≈ -0.89, P < 0.01) with the gasoline consumption. Who would have thought?
 
 
 ### Complete R Script
@@ -142,7 +142,7 @@ library(reshape2)
 library(Hmisc)
 library(stats)
 
-abbreviateSTR <- function(value, prefix){  # format string for more concisely
+abbreviateSTR <- function(value, prefix){  # format string more concisely
   lst = c()
   for (item in value) {
     if (is.nan(item) || is.na(item)) { # if item is NaN return empty string
@@ -185,6 +185,7 @@ ggplot(cordata, aes(x=Var1, y=Var2, fill=value)) + geom_tile() +
 [geom_tile]: http://docs.ggplot2.org/current/geom_tile.html
 [ggplot2]: http://ggplot2.org
 [Hmisc]: http://biostat.mc.vanderbilt.edu/wiki/Main/Hmisc
+[Melt]: http://www.wekaleamstudios.co.uk/posts/melt/
 [Pearson]: http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient
 [R]: http://www.r-project.org
 [reshape2]: https://github.com/hadley/reshape
