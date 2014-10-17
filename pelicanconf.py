@@ -64,7 +64,7 @@ PANDOC_ARGS = [
     '--csl=./jmir.csl',
     '--mathml' ]
 
-ARTICLE_URL = 'blog/{date:%Y}/{date:%b}/{date:%d}/{slug}.html'
+ARTICLE_URL = 'blog/{slug}.html'
 ARTICLE_SAVE_AS = ARTICLE_URL
 #PAGE_URL = '{slug}.html'
 #PAGE_SAVE_AS = '{slug}.html'
