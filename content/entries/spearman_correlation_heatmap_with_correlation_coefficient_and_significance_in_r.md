@@ -2,7 +2,7 @@ Title: Spearman Correlation Heatmap with Correlation Coefficient and Significanc
 Date: 2014-06-23
 Tags: "scientific writing", "R"
 Slug: spearman_correlation_heatmap_with_correlation_coefficient_and_significance_in_r
-Author: Hinrich B. Winther
+Authors: Hinrich B. Winther
 Summary: This is a template for future articles.
 Modified: 
 Modified: 

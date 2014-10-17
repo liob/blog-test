@@ -3,7 +3,7 @@ Date: 2014-05-09
 Tags: "scientific writing"
 Category: "scientific writing"
 Slug: doi_for_blogposts
-Author: Hinrich B. Winther
+Authors: Hinrich B. Winther
 Summary: 
 Modified: 
 Status: draft
