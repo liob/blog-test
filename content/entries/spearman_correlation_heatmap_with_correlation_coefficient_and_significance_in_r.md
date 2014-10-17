@@ -1,14 +1,14 @@
 Title: Spearman Correlation Heatmap with Correlation Coefficient and Significance Levels in R
 Date: 2014-10-17
 Tags: "scientific writing", "R"
-Slug: spearman_correlation_heatmap_with_correlation_coefficient_and_significance_in_r
+Slug: spearman_correlation_heat_map_with_correlation_coefficient_and_significance_in_r
 Authors: Hinrich B. Winther
 #Summary: 
 Modified: 
 Status: draft
 
 
-![Figure 1: Spearman correlation heatmap with correlation coefficient and significance levels based on the mtcars data set.]({filename}/images/R/spearman_correlation_heatmap_mtcars.svg)
+![Figure 1: Spearman correlation heat map with correlation coefficient and significance levels based on the mtcars data set.]({filename}/images/R/spearman_correlation_heatmap_mtcars.svg)
 
 In a recent paper we included data from a survey we conducted. During the publication process, one of the reviewers asked for a more in depth statistical analysis of the data set. He (she?) explicitly expressed a special interest in correlating the variables of the survey in order to spot any interesting correlations. This posed a number of problems:
 
@@ -58,9 +58,9 @@ As most papers in my field use either Pearson's r or Spearman's rho I began my r
 Spearman's rho, on the other hand, is a non-parametric algorithm. It compares two ranked variables of either [ordinal, interval or ratio][Level of measurement] type and describes how well they can be described using a monotonic function. No further assumptions on the data set are necessary which is handy if you do not know too much about the distribution of your data.
 
 
-### Let's get it on!
+### Let's Get It On!
 
-[R], a statistical computing programming language, is being used for the statistical analysis with some additional libraries: [ggplot2] for plotting, [Hmisc] to create a correlation matrix, [reshape2] to meld the dataframe as well as [stats] to provide the [mtcars] data set.
+[R], a statistical computing programming language, is being used for the statistical analysis with some additional libraries: [ggplot2] for plotting, [Hmisc] to create a correlation matrix, [reshape2] to meld the data frame as well as [stats] to provide the [mtcars] data set.
 
 ```R
 library(ggplot2)
@@ -69,7 +69,7 @@ library(Hmisc)
 library(stats)
 ```
 
-The first thing is to calculate the correlation of the individual variables to another. As we have our data already in a dataframe, merely a call of the rcorr function of the Hmisc library is necessary. This creates a new list with two entries: ”r” the correlation coefficients and ”P” the significance levels.
+The first thing is to calculate the correlation of the individual variables to another. As we have our data already in a data frame, merely a call of the rcorr function of the Hmisc library is necessary. This creates a new list with two entries: ”r” the correlation coefficients and ”P” the significance levels.
 
   > rcorr Computes a matrix of Pearson's r or Spearman's rho rank correlation coefficients for all possible pairs of columns of a matrix. Missing values are deleted in pairs rather than deleting all rows of x having any missing variables. Ranks are computed using efficient algorithms, using midranks for ties.  
   -- R Documentation / rcorr {Hmisc}
@@ -112,7 +112,7 @@ cormatrix = rcorr(as.matrix(d), type='spearman')
 
 : Table 4: Resulting correlation matrix - significance levels (cormatrix$P)
 
-The correlation coefficients can be plotted using a heatmap representation. [ggplot2] provides the [geom_tile] geometric object for this purpose. In order to plot the correlation matrix we need to [meld][Melt] the dataframe first.
+The correlation coefficients can be plotted using a heat map representation. [ggplot2] provides the [geom_tile] geometric object for this purpose. In order to plot the correlation matrix we need to [meld][Melt] the data frame first.
 
 ```R
 cordata = melt(cormatrix$r)
@@ -120,16 +120,16 @@ ggplot(cordata, aes(x=Var1, y=Var2, fill=value)) +
   geom_tile() + xlab("") + ylab("")
 ```
 
-![Figure 2: Spearman correlation heatmap based on the mtcars data set. No information about significance levels is included]({filename}/images/R/spearman_correlation_heatmap_mtcars_bare.svg)
+![Figure 2: Spearman correlation heat map based on the mtcars data set. No information about significance levels is included]({filename}/images/R/spearman_correlation_heatmap_mtcars_bare.svg)
 
-Figure 2 shows the resulting Heatmap, plotted by ggplot2. However, some key data is missing. There is no information about the significance levels nor does the plot include the numeric values of Spearman's rho. In order to efficiently use the little space per tile, I wrote a little function ("abbreviateSTR") which abbreviates the values. The resulting strings are stored in a label column. This column can then be plotted onto the corrosponding tile. To further enhance the distinction between significant (P > 0.05) and insignificant correlations, a red, semi transparent, ”X” is being overlaid onto insignificant tiles. The resulting plot is shown in figure 1.
+Figure 2 shows the resulting heat map, plotted by ggplot2. However, some key data is missing. There is no information about the significance levels nor does the plot include the numeric values of Spearman's rho. In order to efficiently use the little space per tile, I wrote a little function ("abbreviateSTR") which abbreviates the values. The resulting strings are stored in a label column. This column can then be plotted onto the corresponding tile. To further enhance the distinction between significant (P > 0.05) and insignificant correlations, a red, semi transparent, ”X” is being overlaid onto insignificant tiles. The resulting plot is shown in figure 1.
 
 
 ### Conclusion
 
-By using the non-parametric Spearman algorithm it is possible to create a preliminary overview of the correlations within a data set. This information can be plotted utilizing a heatmap representation in conjunction with significance levels as well as numeric values of Spearman's rho. The resulting plot is a comprehensible representation of the data set, which allows quick identification of significant correlations.
+By using the non-parametric Spearman algorithm it is possible to create a preliminary overview of the correlations within a data set. This information can be plotted utilizing a heat map representation in conjunction with significance levels as well as numeric values of Spearman's rho. The resulting plot is a comprehensible representation of the data set, which allows quick identification of significant correlations.
 
-Looking at the heatmap, one could get the impression that the gross horsepower has a strong negative correlation (r ≈ -0.89, P < 0.01) with the gasoline consumption. Who would have thought?
+Looking at the heat map, one could get the impression that the gross horsepower has a strong negative correlation (r ≈ -0.89, P < 0.01) with the gasoline consumption. Who would have thought?
 
 
 ### Complete R Script
