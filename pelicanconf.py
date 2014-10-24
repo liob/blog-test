@@ -23,6 +23,7 @@ TRANSLATION_FEED_ATOM = None
 #          ('Jinja2', 'http://jinja.pocoo.org/'),
 #          ('You can modify those links in your config file', '#'),)
 LINKS =  (
+    ('R-bloggers', 'http://www.r-bloggers.com'),
     ('Christian Hundt', 'http://abstractnonsense.de'),
     ('Randy Olson', 'http://www.randalolson.com/blog/'),
 )
