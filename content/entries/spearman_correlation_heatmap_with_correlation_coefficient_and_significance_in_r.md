@@ -57,7 +57,7 @@ As most papers in my field use either Pearson's r or Spearman's rho I began my r
 Spearman's rho, on the other hand, is a non-parametric algorithm. It compares two ranked variables of either [ordinal, interval or ratio][Level of measurement] type and describes how well they can be described using a monotonic function. No further assumptions on the data set are necessary which is handy if you do not know too much about the distribution of your data.
 
 
-### Let's Get It On!
+### Let's Get Started!
 
 [R], a statistical computing programming language, is being used for the statistical analysis with some additional libraries: [ggplot2] for plotting, [Hmisc] to create a correlation matrix, [reshape2] to meld the data frame as well as [stats] to provide the [mtcars] data set.
 
