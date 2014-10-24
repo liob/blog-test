@@ -1,11 +1,10 @@
 Title: Spearman Correlation Heat Map with Correlation Coefficients and Significance Levels in R
-Date: 2014-10-17
+Date: 2014-10-24
 Tags: "scientific writing", "R"
 Slug: spearman_correlation_heat_map_with_correlation_coefficient_and_significance_in_r
 Authors: Hinrich B. Winther
 #Summary: 
 Modified: 
-Status: draft
 
 
 ![Figure 1: Spearman correlation heat map with correlation coefficient and significance levels based on the mtcars data set.]({filename}/images/R/spearman_correlation_heatmap_mtcars.svg)
