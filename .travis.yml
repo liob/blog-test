@@ -12,7 +12,7 @@ before_install:
   - PATH=$HOME/bin:$PATH
   - git submodule update --init --recursive
 install:
-  - pip install pelican==3.4 ghp-import Markdown beautifulsoup4 pypandoc==0.8.1 Pillow
+  - pip install pelican==3.5 ghp-import Markdown beautifulsoup4 pypandoc==0.8.1 Pillow
 script:
   - make github
 env:
