@@ -3,14 +3,13 @@ Date: 2015-02-03
 Tags: "scientific writing", "R", "QuickTip"
 Slug: machine_learning_methods_to_identify_important_variables
 Authors: Hinrich B. Winther
-Status: draft
+#Status: draft
 #Summary: 
-Modified: 
+#Modified: 
 
-> Machine Learning is the field of scientific study that concentrates on induction algorithms and on other
-algorithms that can be said to “learn.” [@_glossary_1998]
+> Machine Learning is the field of scientific study that concentrates on induction algorithms and on other algorithms that can be said to “learn.” [@_glossary_1998]
 
-In order to identify important variables in a multivariate dataset one can utilize machine learning methods. There are many different machine learning algorithms for different tasks. One common task is to decide if a feature vector belongs to a certain class. This can be done with a random forest [@breiman_random_2001] classifier. In order to do so, one has to train the classifier with training data first. Then the classifier can be used to predict the class of other feature vectors. For demonstration purposes we will use the [iris data set]. The following R code loads the "randomForest" library and trains a classifier (forest) with the iris data set. The training label is the "Species" tag.
+In order to identify important variables in a multivariate dataset one can utilize machine learning methods. There are many different machine learning algorithms for different tasks. One common task is to decide if a feature vector belongs to a certain class. This can be done with a random forest [@breiman_random_2001] classifier. In order to do so, one has to train the classifier with training data first. Then the classifier can be used to predict the class of other feature vectors. For demonstration purposes we will use the [iris data set]. The following R code loads the "randomForest" library and trains a classifier (forest) with the iris data set. The "Species" column is set as the training label.
 
 
 ```R
