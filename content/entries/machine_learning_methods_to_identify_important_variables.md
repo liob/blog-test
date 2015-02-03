@@ -19,7 +19,7 @@ In order to identify important variables in a multivariate dataset one can utili
 > forest
 
 Call:
- randomForest(formula = Species ~ ., data = iris, importance = TRUE) 
+ randomForest(formula=Species ~ ., data=iris, importance=TRUE) 
                Type of random forest: classification
                      Number of trees: 500
 No. of variables tried at each split: 2
