@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Proven Inconclusive</title><link href="http://proven-inconclusive.com/" rel="alternate"></link><link href="http://proven-inconclusive.com/feeds/tag.quicktip.atom.xml" rel="self"></link><id>http://proven-inconclusive.com/</id><updated>2015-02-03T00:00:00+01:00</updated><entry><title>QuickTip: Utilizing Machine Learning Methods to Identify Important Variables</title><link href="http://proven-inconclusive.com/blog/machine_learning_methods_to_identify_important_variables.html" rel="alternate"></link><updated>2015-02-03T00:00:00+01:00</updated><author><name>Hinrich B. Winther</name></author><id>tag:proven-inconclusive.com,2015-02-03:blog/machine_learning_methods_to_identify_important_variables.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Machine Learning is the field of scientific study that concentrates on induction algorithms and on other algorithms that can be said to “learn.” &lt;span class="citation" data-cites="_glossary_1998"&gt;[1]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In order to identify important variables in a multivariate dataset one can utilize machine learning methods. There are many different machine learning algorithms for different tasks. One common task is to decide if a feature vector belongs to a certain class. This can be done with a random forest &lt;span class="citation" data-cites="breiman_random_2001"&gt;[2]&lt;/span&gt; classifier. In order to do so, one has to train the classifier with training data first. Then the classifier can be used to predict the class of other feature vectors. For demonstration purposes we will use the &lt;a href="https://stat.ethz.ch/R-manual/R-patched/library/datasets/html/iris.html"&gt;iris data set&lt;/a&gt;. The following R code loads the &amp;quot;randomForest&amp;quot; library and trains a classifier (forest) with the iris data set. The &amp;quot;Species&amp;quot; column is set as the training label.&lt;/p&gt;
+&lt;pre class="sourceCode R"&gt;&lt;code class="sourceCode r"&gt;&amp;gt;&lt;span class="st"&gt; &lt;/span&gt;&lt;span class="kw"&gt;library&lt;/span&gt;(randomForest)
+&amp;gt;&lt;span class="st"&gt; &lt;/span&gt;forest =&lt;span class="st"&gt; &lt;/span&gt;&lt;span class="kw"&gt;randomForest&lt;/span&gt;(Species~., &lt;span class="dt"&gt;data=&lt;/span&gt;iris, &lt;span class="dt"&gt;importance=&lt;/span&gt;&lt;span class="ot"&gt;TRUE&lt;/span&gt;)
+&amp;gt;&lt;span class="st"&gt; &lt;/span&gt;
+&lt;span class="er"&gt;&amp;gt;&lt;/span&gt;&lt;span class="st"&gt; &lt;/span&gt;forest
+
+Call:
+&lt;span class="st"&gt; &lt;/span&gt;&lt;span class="kw"&gt;randomForest&lt;/span&gt;(&lt;span class="dt"&gt;formula=&lt;/span&gt;Species ~&lt;span class="st"&gt; &lt;/span&gt;., &lt;span class="dt"&gt;data=&lt;/span&gt;iris, &lt;span class="dt"&gt;importance=&lt;/span&gt;&lt;span class="ot"&gt;TRUE&lt;/span&gt;) 
+               Type of random forest:&lt;span class="st"&gt; &lt;/span&gt;classification
+                     Number of trees:&lt;span class="st"&gt; &lt;/span&gt;&lt;span class="dv"&gt;500&lt;/span&gt;
+No. of variables tried at each split:&lt;span class="st"&gt; &lt;/span&gt;&lt;span class="dv"&gt;2&lt;/span&gt;
+
+        OOB estimate of  error rate:&lt;span class="st"&gt; &lt;/span&gt;&lt;span class="fl"&gt;4.67&lt;/span&gt;%
+Confusion matrix:
+&lt;span class="st"&gt;           &lt;/span&gt;setosa versicolor virginica class.error
+setosa         &lt;span class="dv"&gt;50&lt;/span&gt;          &lt;span class="dv"&gt;0&lt;/span&gt;         &lt;span class="dv"&gt;0&lt;/span&gt;        &lt;span class="fl"&gt;0.00&lt;/span&gt;
+versicolor      &lt;span class="dv"&gt;0&lt;/span&gt;         &lt;span class="dv"&gt;47&lt;/span&gt;         &lt;span class="dv"&gt;3&lt;/span&gt;        &lt;span class="fl"&gt;0.06&lt;/span&gt;
+virginica       &lt;span class="dv"&gt;0&lt;/span&gt;          &lt;span class="dv"&gt;4&lt;/span&gt;        &lt;span class="dv"&gt;46&lt;/span&gt;        &lt;span class="fl"&gt;0.08&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In this example the classifier achieves an out-of-bag (oob) error rate of 4.67%. There is no need for other tests, such as cross-validation, to get an unbiased estimate of the test set error as each tree is created with a different bootstrap sample &lt;span class="citation" data-cites="breiman_random_2001"&gt;[2]&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The classifier saves information on feature importance (&amp;quot;importance=TRUE&amp;quot;). We can use this information in order to identify potentially import variables in the data set. The following R code extracts this information from the classifier and visualizes the data using ggplot2.&lt;/p&gt;
+&lt;pre class="sourceCode R"&gt;&lt;code class="sourceCode r"&gt;&amp;gt;&lt;span class="st"&gt; &lt;/span&gt;&lt;span class="kw"&gt;library&lt;/span&gt;(ggplot2)
+&amp;gt;&lt;span class="st"&gt; &lt;/span&gt;forest.importance =&lt;span class="st"&gt; &lt;/span&gt;&lt;span class="kw"&gt;as.data.frame&lt;/span&gt;(&lt;span class="kw"&gt;importance&lt;/span&gt;(forest, &lt;span class="dt"&gt;scale=&lt;/span&gt;&lt;span class="ot"&gt;FALSE&lt;/span&gt;))
+&amp;gt;&lt;span class="st"&gt; &lt;/span&gt;forest.importance =&lt;span class="st"&gt; &lt;/span&gt;forest.importance[,&lt;span class="dv"&gt;1&lt;/span&gt;:(&lt;span class="kw"&gt;ncol&lt;/span&gt;(forest.importance)-&lt;span class="dv"&gt;2&lt;/span&gt;)]
+&amp;gt;&lt;span class="st"&gt; &lt;/span&gt;forest.importance$mean =&lt;span class="st"&gt; &lt;/span&gt;&lt;span class="kw"&gt;rowMeans&lt;/span&gt;(forest.importance)
+&amp;gt;
+&lt;span class="er"&gt;&amp;gt;&lt;/span&gt;&lt;span class="st"&gt; &lt;/span&gt;forest.importance&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;caption&gt;Table 1: Feature importance table with calculated mean column.&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr class="header"&gt;
+&lt;th style="text-align: left;"&gt;feature&lt;/th&gt;
+&lt;th style="text-align: right;"&gt;setosa&lt;/th&gt;
+&lt;th style="text-align: right;"&gt;versicolor&lt;/th&gt;
+&lt;th style="text-align: right;"&gt;virginica&lt;/th&gt;
+&lt;th style="text-align: right;"&gt;mean&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class="odd"&gt;
+&lt;td style="text-align: left;"&gt;Sepal.Length&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.031&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.025&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.046&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.034&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="even"&gt;
+&lt;td style="text-align: left;"&gt;Sepal.Width&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.008&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.003&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.011&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.007&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="odd"&gt;
+&lt;td style="text-align: left;"&gt;Petal.Length&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.349&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.322&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.324&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.332&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="even"&gt;
+&lt;td style="text-align: left;"&gt;Petal.Width&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.305&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.289&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.267&lt;/td&gt;
+&lt;td style="text-align: right;"&gt;0.287&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre class="sourceCode R"&gt;&lt;code class="sourceCode r"&gt;&lt;span class="kw"&gt;ggplot&lt;/span&gt;(forest.importance, &lt;span class="kw"&gt;aes&lt;/span&gt;(&lt;span class="dt"&gt;x=&lt;/span&gt;&lt;span class="kw"&gt;row.names&lt;/span&gt;(forest.importance), &lt;span class="dt"&gt;y=&lt;/span&gt;mean)) +
+&lt;span class="st"&gt;  &lt;/span&gt;&lt;span class="kw"&gt;ylab&lt;/span&gt;(&lt;span class="st"&gt;&amp;#39;mean relative feature importance&amp;#39;&lt;/span&gt;) +
+&lt;span class="st"&gt;  &lt;/span&gt;&lt;span class="kw"&gt;xlab&lt;/span&gt;(&lt;span class="st"&gt;&amp;#39;feature&amp;#39;&lt;/span&gt;) +
+&lt;span class="st"&gt;  &lt;/span&gt;&lt;span class="kw"&gt;geom_bar&lt;/span&gt;(&lt;span class="dt"&gt;stat=&lt;/span&gt;&lt;span class="st"&gt;&amp;#39;identity&amp;#39;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;figure&gt;
+&lt;img src="http://proven-inconclusive.com/images/R/ml_mean_relative_feature_importance.svg" alt="Figure 1: Mean relative feature importance learned by a random forest classifier on the iris data set." /&gt;&lt;figcaption&gt;Figure 1: Mean relative feature importance learned by a random forest classifier on the iris data set.&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;div class="references"&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;p&gt;1. Glossary of terms. Machine Learning [Internet] 1998 Feb [cited 2015 Feb 3TZ];30(2-3):271–274. Available from: &lt;a href="http://link.springer.com/article/10.1023/A%3A1017181826899"&gt;http://link.springer.com/article/10.1023/A%3A1017181826899&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2. Breiman L. Random forests. Machine Learning [Internet] 2001 Oct [cited 2015 Feb 3TZ];45(1):5–32. Available from: &lt;a href="http://link.springer.com/article/10.1023/A%3A1010933404324"&gt;http://link.springer.com/article/10.1023/A%3A1010933404324&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term='"scientific writing"'></category><category term='"R"'></category><category term='"QuickTip"'></category></entry></feed>

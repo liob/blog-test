@@ -1,0 +1,144 @@
+img {
+    padding: 4px;
+    margin: 1em 1em 1em 0;
+}
+
+img.align-right {
+    float: right;
+    margin: 1em 0 1em 1em;
+}
+
+figure, table {
+    display: table;
+    max-width: 100%;
+	border: 1px solid #bbb;
+    border-radius: 3px;
+    box-shadow: 4px 4px 4px 0px rgba(128, 128, 128, 0.5);
+    padding: 4px;
+    margin: 0 auto;
+    margin-bottom: 1.5em;
+}
+
+figure img {
+    border: none;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+figcaption {
+    padding: 4px;
+    text-align: center;
+}
+
+.fa-email-square:before {
+    /* support for email symbol in social */
+    content: "\f0e0";
+}
+
+.references {
+    /* font-size: 80%; */
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+#content,article {
+    background-color: white;
+    border-radius: 3px;
+    padding: 9px;
+}
+
+
+/* ---- Tables ---- */
+    
+table {
+    max-width: 100%;
+}
+    
+thead /* Entire table header */
+    {
+    border-bottom: 1pt solid #000;
+    background-color: #eee; /* Does this BG print well? */
+    }
+ 
+tr.header /* Each header row */
+    {
+    } 
+ 
+tbody /* Entire table  body */
+    {
+    }
+ 
+/* Table body rows */
+ 
+tr  {
+    }
+tr.odd:hover, tr.even:hover /* Use .odd and .even classes to avoid styling rows in other tables */
+    {
+    background-color: #eee;
+    }
+    
+/* Odd and even rows */
+tr.odd {}
+tr.even {}
+ 
+td, th /* Table cells and table header cells */
+    { 
+    vertical-align: top; /* Word */
+    vertical-align: baseline; /* Others */
+    padding-left:   0.5em;
+    padding-right:  0.5em;
+    padding-top:    0.2em;
+    padding-bottom: 0.2em;
+    }
+
+th /* Table header cells */
+    {
+    font-weight: bold; 
+    }
+ 
+tfoot /* Table footer (what appears here if caption is on top?) */
+    {
+    }
+ 
+caption /* This is for a table caption tag, not the p.caption Pandoc uses in a div.figure */
+    {
+    caption-side: bottom;
+    padding: 4px;
+    border: 1px solid #bbb;
+    border-top: none;
+    box-shadow: 4px 4px 4px 0px rgba(128, 128, 128, 0.5);
+    z-index: -1;
+    background: white;
+    }
+ 
+
+
+/* ---- Pandoc Code Syntax Highlighting ---- */
+/* source: https://benjeffrey.com/pandoc-syntax-highlighting-css */
+
+/* KeyWordTok */
+.sourceCode .kw { color: #268BD2; }
+/* DataTypeTok */
+.sourceCode .dt { color: #268BD2; }
+
+/* DecValTok (decimal value), BaseNTok, FloatTok */
+.sourceCode .dv, .sourceCode .bn, .sourceCode .fl { color: #D33682; }
+/* CharTok */
+.sourceCode .ch { color: #DC322F; }
+/* StringTok */
+.sourceCode .st { color: #2AA198; }
+/* CommentTok */
+.sourceCode .co { color: #93A1A1; }
+/* OtherTok */
+.sourceCode .ot { color: #A57800; }
+/* AlertTok */
+.sourceCode .al { color: #CB4B16; font-weight: bold; }
+/* FunctionTok */
+.sourceCode .fu { color: #268BD2; }
+/* RegionMarkerTok */
+.sourceCode .re { }
+/* ErrorTok */
+.sourceCode .er { color: #D30102; font-weight: bold; }
